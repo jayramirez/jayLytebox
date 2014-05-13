@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lytebox</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/css/layout.css">
+	<link rel="stylesheet" href="dist/css/lytebox.css">
+	<script src="assets/js/jquery.js"></script>
+	<script src="dist/js/lytebox.2.3.js"></script>
+	<script type="text/javascript">
+		var lytebox = new Lytebox({
+							paddingTop : 100,
+							paddingBottom : 100,
+							bgClose: true,
+							escClose: true
+						});
+	</script>
+</head>
+<body>
+
+<header>
+
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Lytebox</a>
+			</div>
+
+		</div>
+	</nav>
+</header>
+
+<section class="main">
+
+	<div class="container">
+
+
+		<h1 class="page-header">Lytebox</h1>
+		<p>Lytebox is a streamlined, flexible content viewer and dialog prompt. It can be used as an alert message, confirm message, popup dialog, or a simple message dialog which can be styled using html and css.</p>
+
+		<h4>Example:</h4>
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog('this is a lytebox.dialog(). This <b>message</b> <i>can be</i> <u>formatted</u> with <big>html tags.</big>. We can also include any elements here. eg: <input value=textbox >')">Lytebox Dialog</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog('This is a lytebox alert dialog', {type:'alert', title : 'Alert!'})">lytebox alert</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog('This is a lytebox confirm dialog', 'Confirm:', {onConfirm: function(){console.log('confirmed')},type:'confirm'})">lytebox confirm</button>
+
+
+		<button class="btn btn-default" type="button" onclick="lytebox.load('sample.php?a=1&b=2&c=2&d=2&e=2&f=2&g=2&h=2')">lytebox load page</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.show({html:'#popup-inline'})">lytebox inline</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.show({html:'#popup-inline2'})">lytebox inline</button>
+
+		<h1 class="page-header">Let's get started</h1>
+		<h3>Files</h3>
+		<p>We need 3 important files to make things work: jquery.js, lytebox.js and the lytebox.css. Simply embed the files in the head</p>
+
+		<pre >
+		&lt;head&gt;
+			&lt;link href="dist/css/lytebox.css" rel="stylesheet"&gt;
+			&lt;script src="assets/js/jquery.js"&gt;&lt;/script&gt;
+			&lt;script src="dist/js/lytebox.js"&gt;&lt;/script&gt;
+			...
+		</pre>
+
+
+		<h3>Initialize with zero configuration</h3>
+
+		<pre>
+		<i>&lt;script&gt;</i>
+		var lytebox = new Lytebox(); 
+		<i>&lt;/script&gt;</i>
+		</pre>
+
+		<h3>Initialize with custom config</h3>
+		<pre>
+		<i>&lt;script&gt;</i>	
+		var config  = {<i>//config params</i>
+				escClose: true,
+				transitionIn: 300,
+				paddingTop: 100,
+				bgClose : true
+				};
+
+		var lytebox = new Lytebox(config);
+		<i>&lt;/script&gt;</i>
+		</pre>
+		<h3>Config Params (Initialization)</h3>
+		<table class="table table-bordered params">
+			<tr>
+				<th>name</th>
+				<th>type</th>
+				<th>default</th>
+				<th>description</th>
+			</tr>
+
+			<tr>
+				<td>top</td>
+				<td>int</td>
+				<td>null</td>
+				<td>top position of the dialog. If the value is null, the dialog will be vertically aligned to the window.</td>
+			</tr>
+
+			<tr>
+				<td>paddingTop</td>
+				<td>int</td>
+				<td>50</td>
+				<td>padding-top of the dialog container.</td>
+			</tr>
+
+			<tr>
+				<td>paddingBottom</td>
+				<td>int</td>
+				<td>50</td>
+				<td>padding-bottom of the dialog container.</td>
+			</tr>
+
+			<tr>
+				<td>transitionIn</td>
+				<td>int</td>
+				<td>100</td>
+				<td>transition speed of the lytebox while opening (fadeIn). The unit is miliseconds.</td>
+			</tr>
+
+			<tr>
+				<td>transitionOut</td>
+				<td>int</td>
+				<td>100</td>
+				<td>transition speed of the lytebox while closig (fadeOut). The unit is miliseconds.</td>
+			</tr>
+
+			<tr>
+				<td>width</td>
+				<td>int</td>
+				<td>360</td>
+				<td>dialog width</td>
+			</tr>
+
+			<tr>
+				<td>align</td>
+				<td>string</td>
+				<td>'left'</td>
+				<td>text alignment</td>
+			</tr>
+
+			<tr>
+				<td>okCaption</td>
+				<td>string</td>
+				<td>'Ok'</td>
+				<td>text caption for ok/confirm buttons.</td>
+			</tr>
+
+			<tr>
+				<td>cancelCaption</td>
+				<td>string</td>
+				<td>'Cancel'</td>
+				<td>text caption for cancel button.</td>
+			</tr>
+
+			<tr>
+				<td>btnAlign</td>
+				<td>string</td>
+				<td>'right'</td>
+				<td>button (ok, cancel) alignments for alert and confirm dialogs </td>
+			</tr>
+
+			<tr>
+				<td>close</td>
+				<td>boolean</td>
+				<td>true</td>
+				<td>add close button for message dialog</td>
+			</tr>
+
+			<tr>
+				<td>escClose</td>
+				<td>boolean</td>
+				<td>false</td>
+				<td>if set to true, lytebox can be closed by pressing esc key.</td>
+			</tr>
+
+			<tr>
+				<td>bgClose</td>
+				<td>boolean</td>
+				<td>true</td>
+				<td>if set to true, lytebox can be closed by clicking the background of the dialog.</td>
+			</tr>
+		</table>
+
+
+	
+		<h1 class="page-header">Methods</h1>
+		<p>There are 3 main methods in this class: .dialog(), load(), .show();</p>
+
+
+		<div class="code">
+			<h2>.dialog(strMessage)</h2>
+			<h5>.dialog(ObjectParams)</h5>
+			<h5>.dialog(strMessage, ObjectParams)</h5>
+			<h5>.dialog(strMessage, strTitle)</h5>
+			<h5>.dialog(strMessage, strTitle, ObjectParams)</h5>
+		</div>
+
+		<p>This method can be used as message, alert or confirm dialog. If the parameter is string, it will be automatically be considered as message dialog.</p>
+
+		<h4>Demo:</h4>
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog('Hello world.')">Launch</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog('Hello world.', 'Hi')">Message with title</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog({message: 'Hello world.',title : 'Hi', type : 'alert'})">Alert</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog({message: 'Hello world.',title : 'Hi', type : 'alert', onConfirm : function(){ lytebox.dialog('You confirmed') } })">Alert with callback</button>
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog({message: 'Hello world.',title : 'Hi', type : 'confirm'})">Confirm</button>
+
+
+		<button class="btn btn-default" type="button" onclick="lytebox.dialog({message: 'Hello world.',title : 'Hi', type : 'confirm' , onConfirm : function(){ lytebox.dialog('You confirmed') }, onCancel : function(){ lytebox.dialog('You canceled') }  })">Confirm with callback</button>
+
+		<h4>Code:</h4>
+<pre>
+<i>//dialog call with string parameter.</i>
+lytebox.dialog('Hello world.')
+
+<i>//dialog call with object parameter.</i>
+lytebox.dialog({
+	message: 'Hello world.', 
+	title : 'Hi'
+});
+
+<i>//the code above is the same as the code below</i>
+lytebox.dialog('Hello world.','Hi');
+
+<i>//dialog call as alert message.</i>
+lytebox.dialog({
+	message: 'Hello world.', 
+	title : 'Hi',
+	<b>type : 'alert'</b>
+});
+
+<i>//the code above is the same as the code below</i>
+lytebox.dialog('Hello world.', 'Hi', {type : 'alert'});
+
+
+<i>//dialog call as alert message with callback.</i>
+lytebox.dialog({
+	message: 'Hello world.', 
+	title : 'Hi',
+	<b>type : 'alert'</b>,
+	<b>onConfirm : function(){ 
+			lytebox.dialog('You confirmed') 
+		}</b>
+});
+
+<i>//dialog call as confirm message.</i>
+lytebox.dialog({
+	message: 'Hello world.', 
+	title : 'Hi',
+	<b>type : 'confirm'</b>
+});
+
+<i>//dialog call as confirm message with callback.</i>
+lytebox.dialog({
+	message: 'Hello world.', 
+	title : 'Hi',
+	<b>type : 'confirm'</b>,
+	<b>onConfirm : function(){ 
+			lytebox.dialog('You confirmed') 
+		}</b>,
+	<b>onCancel : function(){ 
+			lytebox.dialog('You canceled') 
+		}</b>
+});
+</pre>
+		<h3>ObjParams</h3>
+		<table class="table table-bordered params">
+			<tr>
+				<th>name</th>
+				<th>type</th>
+				<th>default</th>
+				<th>description</th>
+			</tr>
+
+			<tr>
+				<td>message</td>
+				<td>string</td>
+				<td>''</td>
+				<td>dialog message. can contain html tags.</td>
+			</tr>
+
+			<tr>
+				<td>title</td>
+				<td>string</td>
+				<td>null</td>
+				<td>dialog title. can contain html tags.</td>
+			</tr>
+
+			<tr>
+				<td>align</td>
+				<td>string</td>
+				<td>Config.align</td>
+				<td>Dialog content alignment.</td>
+			</tr>
+
+			<tr>
+				<td>close</td>
+				<td>boolean</td>
+				<td>Config.align</td>
+				<td>add close button for message dialog</td>
+			</tr>
+
+			<tr>
+				<td>type</td>
+				<td>string</td>
+				<td>'message'</td>
+				<td>dialog types: message, alert, confirm</td>
+			</tr>
+
+			<tr>
+				<td>okCaption</td>
+				<td>string</td>
+				<td>Config.okCaption</td>
+				<td>text caption for OK button.</td>
+			</tr>
+			<tr>
+				<td>cancelCaption</td>
+				<td>string</td>
+				<td>Config.cancelCaption</td>
+				<td>text caption for cancel button.</td>
+			</tr>
+
+			<tr>
+				<td>btnAlign</td>
+				<td>string</td>
+				<td>Config.btnAling</td>
+				<td>button alignment.</td>
+			</tr>
+
+			<tr>
+				<td>top</td>
+				<td>int</td>
+				<td>Config.top</td>
+				<td>top position of the dialog. If the value is null, the dialog will be vertically aligned to the window.</td>
+			</tr>
+
+			<tr>
+				<td>width</td>
+				<td>int</td>
+				<td>Config.width</td>
+				<td>dialog width</td>
+			</tr>
+
+			<tr>
+				<td>escClose</td>
+				<td>boolean</td>
+				<td>Config.escClose</td>
+				<td><CENTER></CENTER>lose the lytebox by pressing the esc key</td>
+			</tr>
+
+			<tr>
+				<td>bgClose</td>
+				<td>boolean</td>
+				<td>Config.bgClose</td>
+				<td>Close the lytebox by clicking the background</td>
+			</tr>
+
+			<tr>
+				<td>onOpen</td>
+				<td>function</td>
+				<td></td>
+				<td>callback function after the lytebox showed.</td>
+			</tr>
+
+			<tr>
+				<td>onClose</td>
+				<td>function</td>
+				<td></td>
+				<td>callback function after the lytebox closed.</td>
+			</tr>
+
+			<tr>
+				<td>onConfirm</td>
+				<td>function</td>
+				<td></td>
+				<td>callback function after the clicking the confirm button.</td>
+			</tr>
+
+			<tr>
+				<td>onCancel</td>
+				<td>function</td>
+				<td></td>
+				<td>callback function after the clicking the cancel button.</td>
+			</tr>
+
+		</table>
+	</div>
+
+</section>
+
+
+<br><br><br>	
+
+<!-- popups -->
+<div class="lytebox-wrap">
+	<div class="lytebox-content-holder">
+		
+		<div class="popup lytebox-wrapped-content" id="popup-inline">
+				<div class="popclose lytebox-close">CLOSE</div>
+				inline popup1
+		</div>
+
+		<div class="popup lytebox-wrapped-content" id="popup-inline2">
+				<div class="popclose lytebox-close">CLOSE</div>
+				
+		</div>
+
+	</div>
+	<style type="text/css">
+	.popup{
+		width:600px; 
+		height:400px;
+		background: #fff; 
+		margin: 0 auto; 
+		padding: 20px; 
+		position:relative;
+		border: solid 10px #333; 
+		font:12px arial;
+	}
+
+	.popclose{
+		position: absolute;
+		cursor: pointer;
+		right: 0;
+		top: 0;
+		padding: 20px;
+
+	}
+
+	</style>
+</div>
+
+
+</body>
+
+
+</html>

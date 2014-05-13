@@ -1,0 +1,43 @@
+.navbar{
+  margin: 0;
+}
+section.main{
+
+
+}
+
+
+section.main > .container{
+  min-height: 1500px;
+  padding-top: 30px
+}
+
+pre{
+
+}
+
+pre i{
+	color: #999;
+	font-size: 11px
+}
+
+pre b{
+	color: #f00
+}
+
+.code{
+	margin-bottom: 20px;
+}
+.code h2, .code h4, .code h5{
+	font-family: monospace ;
+	font-weight: bold;
+}
+.code h5{
+	margin-left: 40px;
+}
+
+table.params  td:first-child{
+	font-weight: bold;
+	font-family: monospace ;
+	color: #088000
+}
